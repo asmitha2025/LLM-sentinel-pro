@@ -1,0 +1,33 @@
+# Environment
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+pytest-cache-files-*/
+
+# Database
+backend/state.json
+backend/sentinel.db
+backend/sentinel.db-*
+backend/sentinel_tmp_probe.db*
+probe*.db*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp & scratch
+_tmp/
+scratch/
+
+# Large dataset files
+datasets/customer_support_tickets_200k.csv

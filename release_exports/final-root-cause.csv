@@ -1,0 +1,7 @@
+section,key,value
+summary,primary_cause,No active incident. Latest production checks are within configured monitoring thresholds.
+summary,top_category,None
+summary,top_category_score,0
+summary,impact_radius,0 Sessions
+summary,duration,0m 00s
+summary,risk_level,Healthy

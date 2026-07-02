@@ -1,0 +1,11 @@
+category,sample_count,avg_score,status
+Account Suspension,500,0.066,Stable
+Bug Report,489,0.065,Stable
+Data Sync Issue,505,0.067,Stable
+Feature Request,539,0.066,Stable
+Login Issue,476,0.066,Stable
+Payment Problem,504,0.066,Stable
+Performance Issue,502,0.066,Stable
+Refund Request,494,0.066,Stable
+Security Concern,507,0.065,Stable
+Subscription Cancellation,484,0.067,Stable

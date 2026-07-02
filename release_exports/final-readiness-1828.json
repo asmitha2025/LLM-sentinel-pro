@@ -1,0 +1,189 @@
+﻿{
+    "generated_at":  "2026-05-24T14:08:57.407139+00:00",
+    "status":  {
+                   "label":  "Ready for controlled pilot",
+                   "tone":  "warning",
+                   "detail":  "1 warning item should be accepted or resolved before broad rollout.",
+                   "passed":  9,
+                   "warning":  1,
+                   "blocked":  0,
+                   "total_checks":  10,
+                   "score":  95
+               },
+    "checks":  [
+                   {
+                       "key":  "evaluation_evidence",
+                       "label":  "Evaluation Evidence",
+                       "status":  "passed",
+                       "owner":  "Evaluation",
+                       "detail":  "2 evaluation runs are available for release review.",
+                       "action":  "Keep evaluation cadence active."
+                   },
+                   {
+                       "key":  "operator_decision",
+                       "label":  "Operator Decision",
+                       "status":  "passed",
+                       "owner":  "Release Manager",
+                       "detail":  "EVAL-002 is Approved.",
+                       "action":  "Keep the approval note with the audit bundle."
+                   },
+                   {
+                       "key":  "version_snapshot",
+                       "label":  "Model / Prompt Snapshot",
+                       "status":  "passed",
+                       "owner":  "ML Platform",
+                       "detail":  "GPT-4o Support Primary / support-template-1828-final / Guardrail-Alpha Strict",
+                       "action":  "Confirm the release model, prompt version, and guardrail policy are current."
+                   },
+                   {
+                       "key":  "baseline_dataset",
+                       "label":  "Baseline Dataset",
+                       "status":  "passed",
+                       "owner":  "Evaluation",
+                       "detail":  "1 saved dataset available.",
+                       "action":  "Refresh datasets after major policy changes."
+                   },
+                   {
+                       "key":  "evaluator_engine",
+                       "label":  "Evaluator Engine",
+                       "status":  "warning",
+                       "owner":  "Evaluation",
+                       "detail":  "Using deterministic local evaluator. Install/configure external engines for production scoring.",
+                       "action":  "Install SentenceTransformers or RAGAS and set SENTINEL_EVALUATOR_ENGINE for production-grade scoring."
+                   },
+                   {
+                       "key":  "audit_exports",
+                       "label":  "Audit Exports",
+                       "status":  "passed",
+                       "owner":  "Compliance",
+                       "detail":  "Latest bundle available at /api/reports/audit/EVAL-002.",
+                       "action":  "Attach current report, run audit, and CSV exports to the release record."
+                   },
+                   {
+                       "key":  "alert_routes",
+                       "label":  "Alert Routes",
+                       "status":  "passed",
+                       "owner":  "Operations",
+                       "detail":  "Enabled channels: Slack, Email.",
+                       "action":  "Connect live Slack/email destinations before production exposure."
+                   },
+                   {
+                       "key":  "access_control",
+                       "label":  "Access Control",
+                       "status":  "passed",
+                       "owner":  "Security",
+                       "detail":  "API key environment variable is configured.",
+                       "action":  "Set an API key and enforce it at the gateway before exposing this service."
+                   },
+                   {
+                       "key":  "state_backend",
+                       "label":  "State Backend",
+                       "status":  "passed",
+                       "owner":  "Platform",
+                       "detail":  "State backend: sqlite at C:\\Users\\harih\\AppData\\Local\\Temp\\llm-sentinel-pro\\sentinel.db.",
+                       "action":  "Validate backup and retention policy."
+                   },
+                   {
+                       "key":  "deployment_profile",
+                       "label":  "Deployment Profile",
+                       "status":  "passed",
+                       "owner":  "Platform",
+                       "detail":  "SENTINEL_ENV=production.",
+                       "action":  "Set SENTINEL_ENV=staging or production in deployed environments."
+                   }
+               ],
+    "required_inputs":  [
+                            {
+                                "key":  "evaluator_engine",
+                                "label":  "Evaluator Engine",
+                                "status":  "warning",
+                                "owner":  "Evaluation",
+                                "action":  "Install SentenceTransformers or RAGAS and set SENTINEL_EVALUATOR_ENGINE for production-grade scoring."
+                            }
+                        ],
+    "environment":  {
+                        "deployment_profile":  "production",
+                        "state_backend":  "sqlite",
+                        "api_key_configured":  true,
+                        "alert_channels":  [
+                                               "Slack",
+                                               "Email"
+                                           ],
+                        "state_file":  "C:\\Users\\harih\\AppData\\Local\\Temp\\llm-sentinel-pro\\sentinel.db",
+                        "evaluator_engine":  "local",
+                        "evaluator_mode":  "deterministic-local"
+                    },
+    "evaluator":  {
+                      "requested_engine":  "local",
+                      "active_engine":  "local",
+                      "mode":  "deterministic-local",
+                      "status":  "warning",
+                      "message":  "Using deterministic local evaluator. Install/configure external engines for production scoring.",
+                      "local_signals":  [
+                                            "semantic_similarity",
+                                            "groundedness",
+                                            "answer_relevance",
+                                            "unsupported_terms",
+                                            "policy_flags",
+                                            "risk_reasons"
+                                        ],
+                      "integrations":  [
+                                           {
+                                               "key":  "sentence_transformers",
+                                               "label":  "SentenceTransformers",
+                                               "package":  "sentence_transformers",
+                                               "purpose":  "Embedding semantic similarity for expected vs current answers.",
+                                               "signals":  [
+                                                               "semantic_similarity"
+                                                           ],
+                                               "available":  true,
+                                               "configured":  false,
+                                               "status":  "available"
+                                           },
+                                           {
+                                               "key":  "ragas",
+                                               "label":  "RAGAS",
+                                               "package":  "ragas",
+                                               "purpose":  "RAG faithfulness, answer relevance, and groundedness metrics.",
+                                               "signals":  [
+                                                               "faithfulness",
+                                                               "answer_relevance",
+                                                               "context_precision"
+                                                           ],
+                                               "available":  false,
+                                               "configured":  false,
+                                               "status":  "missing"
+                                           }
+                                       ]
+                  },
+    "latest_run":  {
+                       "id":  "EVAL-002",
+                       "created_at":  "2026-05-24T14:07:13.210905+00:00",
+                       "status":  "System Healthy",
+                       "status_level":  "healthy",
+                       "source":  "Saved Dataset",
+                       "dataset_id":  "DATASET-001",
+                       "dataset_name":  "Kaggle Customer Support Tickets 5K Validation",
+                       "sample_count":  5000,
+                       "top_category":  "Data Sync Issue",
+                       "semantic_drift":  0.0,
+                       "hallucination_rate":  0.0,
+                       "statistical_drift":  0.0,
+                       "latency_ms":  820,
+                       "confidence":  55,
+                       "message":  "Dataset \u0027Kaggle Customer Support Tickets 5K Validation\u0027 completed for 5000 responses under the configured thresholds.",
+                       "model_name":  "GPT-4o Support Primary",
+                       "prompt_version":  "support-template-1828-final",
+                       "guardrail_policy":  "Guardrail-Alpha Strict",
+                       "decision_status":  "approved",
+                       "decision_label":  "Approved",
+                       "decision_note":  "Approved after placing 1828 release marker in API metadata.",
+                       "decision_updated_at":  "2026-05-24T14:07:16.070637+00:00"
+                   },
+    "exports":  {
+                    "handoff_package":  "/api/reports/handoff",
+                    "readiness":  "/api/operations/readiness",
+                    "operator_review":  "/api/reports/operator-review",
+                    "current_report":  "/api/reports/current"
+                }
+}
